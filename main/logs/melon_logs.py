@@ -24,21 +24,20 @@ def __setup_logger():
 
     set_log_lvl = logging.DEBUG
     logger = logging.getLogger('example')
-    _time = f"{datetime.now().strftime('%d_%m_%Y')}_{time.strftime('%H_%M_%S')}"
+    _time = f"{datetime.now().strftime('%d_%m_%Y')}_{time.strftime('%H')}"
     _project_logs = 'project_logs'
-    _file_name = f'{_project_logs}/full_log_{_time}.log'
+    _file_name = f'{_project_logs}/log_{_time}.log'
     _root_folder = dirname(dirname(abspath(__file__)))
     path = join(_root_folder, _file_name)
     _dir_path = join(_root_folder, _project_logs)
     if not os.path.exists(_dir_path):
         os.mkdir(_dir_path)
 
-    if sys.argv[1] not in ('list_onapp_vms', 'list_onapp_users'):
-        logging.basicConfig(filename=path,
-                            filemode='a',
-                            format='[%(asctime)s,%(msecs)d] [%(levelname)s] %(message)s',
-                            datefmt='%H:%M:%S',
-                            level=logging.DEBUG)
+    logging.basicConfig(filename=path,
+                        filemode='a',
+                        format='[%(asctime)s,%(msecs)d] [%(levelname)s] %(message)s',
+                        datefmt='%H:%M:%S',
+                        level=logging.DEBUG)
     handler = logging.StreamHandler()
     handler.setFormatter(formatter)
     logger.addHandler(handler)

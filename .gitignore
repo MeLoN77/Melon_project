@@ -1,0 +1,4 @@
+/project_logs/
+/main/scripts/password_generator.py
+/main/crypto/fernet_file.py
+/main/key.key
