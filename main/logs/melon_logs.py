@@ -1,7 +1,6 @@
 import logging
 import logging.handlers
 import os
-import sys
 from os.path import join, dirname, abspath
 import time
 

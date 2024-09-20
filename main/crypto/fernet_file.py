@@ -21,4 +21,3 @@ encrypted_code = cipher.encrypt(code)
 # Save the encrypted script
 with open(f'{_root_folder}/scripts/encrypted_password_generator.py.enc', 'wb') as f:
     f.write(encrypted_code)
-
