@@ -18,8 +18,8 @@ with open(_script, 'rb') as f:
 decrypted_code = cipher.decrypt(encrypted_code).decode('utf-8')
 
 # Execute the decrypted code
-word_1 = "Word"
-number_1 = "987654321"
+word_1 = "Grandpa"
+number_1 = "1941"
 exec(decrypted_code)
 
 pg = PasswordGenerator(word_1, number_1)
