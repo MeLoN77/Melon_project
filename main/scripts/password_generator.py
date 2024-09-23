@@ -125,21 +125,19 @@ class PasswordGenerator:
             longer_element = _longer[0]
             if _shorter:
                 shorter_element = _shorter[0]
-
             if longer_element.isdigit():
                 _password += longer_element
-
-                if shorter_element == LETTERS_LOWERCASE[0]:
-                    _password += _letter_a[0]
-
-                    # Remove used element
-                    _letter_a.pop(_letter_a[0])
-
                 if shorter_element:
                     if n == 0 and isinstance(shorter_element, int) is False:
                         _password += shorter_element.upper()
                     else:
-                        _password += shorter_element
+                        if shorter_element == LETTERS_LOWERCASE[0]:
+                            _password += _letter_a[0]
+
+                            # Remove used element
+                            _letter_a.pop(0)
+                        else:
+                            _password += shorter_element
             else:
                 if shorter_element:
                     if n == 0 and isinstance(shorter_element, int) is False:
@@ -147,16 +145,16 @@ class PasswordGenerator:
                     else:
                         _password += shorter_element
 
-                if longer_element == LETTERS_LOWERCASE[0]:
-                    _password += _letter_a[0]
-
-                    # Remove used element
-                    _letter_a.pop(0)
-
                 elif n == 0 and isinstance(longer_element, str) is True:
                     _password += longer_element.upper()
                 else:
-                    _password += longer_element
+                    if longer_element == LETTERS_LOWERCASE[0]:
+                        _password += _letter_a[0]
+
+                        # Remove used element
+                        _letter_a.pop(0)
+                    else:
+                        _password += longer_element
 
             # Removing used characters from variable
             _longer = _longer[1::]
@@ -203,5 +201,8 @@ class PasswordGenerator:
 
 
 # How to use:
-# PasswordGenerator(word=word_1, numbers=number_1).password()
+word_1 = "Oxana"
+number_1 = "12345"
+# _pwd = PasswordGenerator(word=word_1, numbers=number_1).password()
+# log.debug(_pwd)
 # Do anything you want with new pwd. Take care and good luck!
